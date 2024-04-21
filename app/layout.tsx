@@ -3,6 +3,7 @@ import "./globals.css";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Inter as FontSans } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -26,8 +27,10 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        外层的layout
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system">
+          外层的layout
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
